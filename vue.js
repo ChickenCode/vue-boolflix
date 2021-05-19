@@ -5,7 +5,7 @@ new Vue({
         tmbdApiKey: "14a71724c6989940b458fd958cd75ba2",
         textToSearch: "",
         moviesList: [],
-        tvShowList: []
+        tvShowList: [],        
     },
 
     methods: {
@@ -29,6 +29,7 @@ new Vue({
                     if (searchType === "movie") {
                         this.moviesList = resp.data.results.map((movie) => {
                             movie.voto = (movie.vote_average / 2).toFixed(1)
+                            movie.flag = `Lingua: <span class="flag-icon flag-icon-${movie.original_language}"></span>`
 
                             return movie
                         })
@@ -38,6 +39,7 @@ new Vue({
                             tvShow.original_title = tvShow.original_name
                             tvShow.title = tvShow.name
                             tvShow.voto = (tvShow.vote_average / 2).toFixed(1)
+                            tvShow.flag = `Lingua: <span class="flag-icon flag-icon-${tvShow.original_language}"></span>`
 
                             return tvShow
                         })
