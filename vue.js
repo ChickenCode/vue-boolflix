@@ -31,9 +31,10 @@ new Vue({
 
                     if (searchType === "movie") {
                         this.moviesList = resp.data.results.map((movie) => {
-                            movie.voto = Math.ceil(movie.vote_average / 2)
+                            movie.banana = Math.ceil(movie.vote_average / 2)
                             movie.flag = `Lingua: <span class="flag-icon flag-icon-${movie.original_language}"></span>`
                             movie.img = `<img src='${baseURL}w185/${movie.poster_path}'>`
+                            
                             return movie
                         })
 
@@ -41,9 +42,10 @@ new Vue({
                         this.tvShowList = resp.data.results.map((tvShow) => {
                             tvShow.original_title = tvShow.original_name
                             tvShow.title = tvShow.name
-                            tvShow.voto = (tvShow.vote_average / 2).toFixed(1)
+                            tvShow.banana = Math.ceil(tvShow.vote_average / 2)
                             tvShow.flag = `Lingua: <span class="flag-icon flag-icon-${tvShow.original_language}"></span>`
-
+                            tvShow.img = `<img src='${baseURL}w185/${tvShow.poster_path}'>`
+                            
                             return tvShow
                         })
                     }
@@ -54,6 +56,17 @@ new Vue({
         doSearch() {
             this.makeAxiosSearch("movie")
             this.makeAxiosSearch("tv")
+        },
+
+        starConverter(element) {
+
+            let stars = ""
+
+            for (i=0; i < element; i++) {
+                stars += "&#11088"
+            }
+
+            return stars
         }
     }
 })
