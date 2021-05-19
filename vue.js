@@ -2,6 +2,7 @@ new Vue({
     el: '#root',
 
     data: {
+        baseImgURL: "https://image.tmdb.org/t/p/", 
         tmbdApiKey: "14a71724c6989940b458fd958cd75ba2",
         textToSearch: "",
         moviesList: [],
@@ -26,11 +27,13 @@ new Vue({
 
             axios.get("https://api.themoviedb.org/3/search/" + searchType, axiosOptions)
                 .then((resp) => {
+                    baseURL = this.baseImgURL
+
                     if (searchType === "movie") {
                         this.moviesList = resp.data.results.map((movie) => {
-                            movie.voto = (movie.vote_average / 2).toFixed(1)
+                            movie.voto = Math.ceil(movie.vote_average / 2)
                             movie.flag = `Lingua: <span class="flag-icon flag-icon-${movie.original_language}"></span>`
-
+                            movie.img = `<img src='${baseURL}w185/${movie.poster_path}'>`
                             return movie
                         })
 
