@@ -1,0 +1,59 @@
+/* General */
+
+body {
+    padding-top: 150px;
+}
+
+/* Header */
+
+header {
+    position: fixed;
+    top: 0;
+}
+
+.logo img {
+    height: 80px;
+
+}
+
+.my-profile-image {
+    height: 30px;
+    margin-right: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+header ul li {
+    margin: 27px 10px;
+}
+
+header ul li:last-of-type {
+    margin-right: 50px;
+}
+
+header button {
+    background-color: unset;
+    border: unset;
+}
+
+/* Main */  
+main ul {
+    flex-wrap: wrap;
+}
+
+
+main ul li {
+    margin: 10px;
+    flex-direction: column;
+    flex-basis: 15%;
+}
+
+main ul li img {
+    height: 250px;
+    object-fit: none;
+    width: 185px;
+    object-fit: cover
+    ;
+}

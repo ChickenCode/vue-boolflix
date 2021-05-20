@@ -10,12 +10,8 @@ new Vue({
     },
 
     methods: {
+// Regola la chiamata API a seconda del testo inserito nel "input" che modifica textToSearch
         makeAxiosSearch(searchType) {
-
-            //prendere il testo da cercare this.textToSearch
-            //comporre la query string da usare durante la chiamare alle api di TMDB.
-            //eseguire la chiamata all'endpoint che mi serve, inviando la questystring appena creata.
-            //nel then della risposta, salvo i dati ricevuti in una variabile locale
 
             const axiosOptions = {
                 params: {
@@ -53,11 +49,13 @@ new Vue({
                 })
         },
 
+// Accorpa la ricerca per film e serie tv in una funzione sola
         doSearch() {
             this.makeAxiosSearch("movie")
             this.makeAxiosSearch("tv")
         },
 
+// Converte il voto da 1 a 5 in stelle
         starConverter(element) {
 
             let stars = ""
